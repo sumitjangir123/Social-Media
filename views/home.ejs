@@ -1,0 +1,47 @@
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"> -->
+<link rel="stylesheet" href="/css/home.css">
+<h1>HIi this is home page</h1>
+
+
+<section id="feed-posts">
+        <% if(locals.user){%>
+        <h4>Posts</h4>
+        <form action="post/create" id="new-post-form" method="POST">
+                <textarea name="content" cols="30" rows="10"></textarea>
+                <input type="submit" value="post">
+        </form>
+        <%}%>
+    <h4>posts till now</h4>
+         <ul>
+                <% for(let i of list){%>
+                <li>
+                        <%if (locals.user && locals.user.id==i.user.id) {%>
+                        <a href="post/destroy/<%=i.id%>">X</a>
+                        <%}%>
+                        <span><%=i.content%></span>: <span><%=i.user.name%></span>
+
+                        <div class="post-comments">
+                                <% if (locals.user) {%>
+                                <form action="comment/create" method="POST">
+                                        <input type="text" name="content" placeholder="type here to add a comment. . .">
+                                        <input type="hidden" name="post" value="<%=i._id%>">
+                                        <input type="submit" value="add comment">
+                                </form>
+                                <%}%>
+
+                                 <div class="post-comments-list">
+                                         <ul id="post-comments-<%=i._id%>">
+                                                <% for(comment of i.comment) { %>
+                                                        <li>
+                                                                <p><%=comment.content%> : <%=comment.user.name%> <a href="comment/destroy/<%=comment.id%>"> X</a></p>
+                                                        </li>
+                                                 <%}%>
+                                         </ul>
+                                 </div>
+                        </div>
+
+                </li>
+                <%}%>
+        </ul>
+
+</section>

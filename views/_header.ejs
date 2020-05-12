@@ -1,0 +1,15 @@
+<header>
+  <h1>Sumit</h1>
+  
+  <ul>
+    <!-- if user is there -->
+    <% if(locals.user){%>
+      <li><a href="/user/profile"><%=user.name%></a></li>
+          <li><a href="/user/signOut"> Sign Out </a></li>
+    <!-- if user is not there --> 
+      <%}else {%>
+        <li><a href="/user/signIn">Sign In</a></li>
+        <li><a href="/user/signUp">Sign Up</a></li>
+        <%}%>
+  </ul>
+</header>

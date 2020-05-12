@@ -1,0 +1,13 @@
+footer {
+  width: 100%;
+  background-color: gray;
+  color: white;
+  display: flex; }
+  footer ul {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    width: 8rem; }
+    footer ul li a {
+      text-decoration: none;
+      color: white; }
