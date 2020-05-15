@@ -1,5 +1,6 @@
 const db=require('../config/mongoose');
 const Post = require("../models/post");
+const User = require("../models/user")
 //home controller
 module.exports.home=function(req,res){
 
@@ -15,10 +16,15 @@ module.exports.home=function(req,res){
     .exec(
         function(err,post_list){
             if(err){console.log('error in fetching the posts'); return ;}
-            return res.render('home',{
-                list : post_list,
-                title:"Social Media"
-            });
+
+            User.find({},function(err,users){
+                return res.render('home',{
+                    list : post_list,
+                    users_list : users,
+                    title:"Social Media"
+                });
+            })
+            
         }
     )      
 }

@@ -3,8 +3,10 @@
 
     <ul>
         <li> <a href="/">Home</a></li>
+        <% if(locals.user) {%>
         <li>
-            <a href="/user/profile">Profile</a>
+            <a href="/user/profile/<%=user.id%>">Profile</a>
         </li>
+        <%}%>
     </ul>
 </footer>

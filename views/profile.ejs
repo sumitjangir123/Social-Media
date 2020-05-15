@@ -1,4 +1,13 @@
-<h1>user is <%=user.name%></h1>
-<h2>password <%=user.password%></h2>
-<h3>email : <%=user.email%></h3>
-<h3>user id : <%=user._id%></h3>
+
+<% if(locals.user.id == profile_user._id){%>
+    <h4>Wants to update something ...</h4>
+    <form action="/user/profile/update/<%=profile_user.id%>" method="POST">
+        <input type="text" placeholder="enter your name..." name="name" required>
+        <input type="email" name="email" placeholder="enter your mail" required>
+        <input type="submit">
+    </form>
+<%}else{%>
+        <h4>Details : </h4>
+    <h3>email : <%=profile_user.email%></h3>
+    <h3>user id : <%=profile_user._id%></h3>
+<%}%>

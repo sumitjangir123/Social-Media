@@ -1,6 +1,30 @@
-<h1>hii this is Sign In page :)</h1>
-<form action="/user/create_session" method="POST">
-    <input type="email" name="email" placeholder="your email" required>
-    <input type="password" name="password" placeholder="your password" required>
-    <input type="submit">
-</form>
+<link rel="stylesheet" href="/css/sign_in.css">
+
+<h1 id="sign-in-heading">COME TOGETHER & SHARE YOUR MOOD</h1>
+
+<div id="quality">
+    <p><span><i class="far fa-check-circle"></i></span> Register</p>
+    <p><span><i class="far fa-check-circle"></i></span> Find Local Friends</p>
+    <p><span><i class="far fa-check-circle"></i></span> Free</p>
+</div>
+
+<div id="sign-in-outer">   
+    <div id="sign-in-section">
+
+        <div id="sign-in-logo">
+            <p>Sign In</p>
+        </div>
+
+        <div id="form-section">
+        <form action="/user/create_session" method="POST">
+            <p><span><i class="fas fa-envelope"></i></span> User Email</p>
+            <input type="email" name="email" placeholder="Email" required class="sign-in-input">
+            <p><span><i class="fas fa-key"></i></span> User Password</p>
+            <input type="password" name="password" placeholder="Password" required class="sign-in-input">
+            <button type="submit" id="sign-in-submit"><span> Sign In</span> <i class="fas fa-space-shuttle"></i></button>
+        </form>
+        </div>
+
+    </div>
+</div>
+

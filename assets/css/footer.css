@@ -2,7 +2,9 @@ footer {
   width: 100%;
   background-color: gray;
   color: white;
-  display: flex; }
+  display: flex;
+  position: fixed;
+  bottom: 0; }
   footer ul {
     display: flex;
     justify-content: space-between;

@@ -3,6 +3,8 @@ footer{
     background-color: gray;
     color: white;
     display: flex;
+    position: fixed;
+    bottom: 0;
     ul{
         display: flex;
         justify-content: space-between;

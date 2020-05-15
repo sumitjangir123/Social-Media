@@ -1,21 +1,20 @@
-header {
-  font-family: Arial, Helvetica, sans-serif;
+#layout-header {
   display: flex;
-  width: 100%;
-  background-color: blue;
+  background-color: black;
   color: white;
-  justify-content: space-between; }
-  header h1 {
+  justify-content: space-between;
+  top: 0;
+  width: 100%; }
+  #layout-header h1 {
     margin: 5px 0px 5px 10px; }
-  header ul {
-    list-style: none;
+  #layout-header #heading-control {
     display: flex;
-    justify-content: space-between;
-    margin-right: 20px;
-    font-size: 20px;
-    width: 10rem;
-    margin: 0px 20px 0px 0px;
+    font-size: 0px;
+    width: auto;
     align-items: center; }
-    header ul li a {
-      text-decoration: none;
-      color: white; }
+    #layout-header #heading-control p {
+      margin-right: 20px; }
+      #layout-header #heading-control p a {
+        text-decoration: none;
+        color: white;
+        font-size: 22px; }

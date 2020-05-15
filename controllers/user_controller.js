@@ -18,9 +18,11 @@ module.exports.profile = function (req, res) {
     //     console.log('pehle data to dal be !!! ;() ');
     //     return res.redirect('signIn');
     // }
-
-    return res.render('profile', {
-        title: "profile page"
+    User.findById(req.params.id,function(err,user){
+        return res.render('profile', {
+            title: "profile page",
+            profile_user : user
+        })
     })
 }
 module.exports.signUp = function (req, res) {
@@ -70,38 +72,6 @@ module.exports.create_user = function (req, res) {
     })
 }
 
-// module.exports.create_session=function(req,res){
-//     //handle sign in
-//     //if user exists and password is incorrect
-
-//     User.findOne({email:req.body.email},function(err,user){
-//         if(err){
-//             //error in finding the user
-//             console.log("error in finding the user in signing In !!!");
-//             return res.redirect('back');
-//         }
-
-//         if(user){
-//             //if user found
-//             //if(password don't match
-//             if(user.password!=req.body.password){
-//                 console.log("wrong password");
-//                 return res.redirect('back');
-//             }else{
-//                     res.cookie('user_id',user.id);
-//                     return res.redirect("/user/profile");
-//             }
-//         }
-//         else{
-//             //if user not found
-//             console.log('user not found !!!');
-//             return res.redirect('back');
-//         }
-
-//     })
-
-// }
-
 // sign in and create a session for the user
 module.exports.createSession = function (req, res) {
     return res.redirect('/');
@@ -111,4 +81,14 @@ module.exports.createSession = function (req, res) {
 module.exports.destroySession =function(req,res){
     req.logout();
     return res.redirect('/');
+}
+
+module.exports.update = function(req,res){
+    if(req.params.id==req.user.id){
+        User.findByIdAndUpdate(req.params.id,{name : req.body.name,email : req.body.email},function(err,user){
+            return res.redirect('back');
+        })
+    }else{
+        return res.status(401).send('Unauthorized');
+    }  
 }
