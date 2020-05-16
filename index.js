@@ -12,6 +12,9 @@ const passportLocal=require('./config/passport-local-strategy');
 //here we use mongo store to store session cookie b'coz don't want to remove session cookie at every server restart ;)
 const MongoStore=require('connect-mongo')(session);
 const sassMiddleware=require('node-sass-middleware');
+//for flash notification
+const flash=require('connect-flash'); 
+const customMware = require('./config/middleware');
 
 app.use(sassMiddleware({
     src : './assets/scss',
@@ -64,9 +67,12 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.setAuthenticatedUser);
 
+//using flash services and put it after the sessions because it uses session cookies
+app.use(flash());
+app.use(customMware.setFlash);
+
 //use express router
 app.use('/',require("./routes/index.js"));
-
 //setting up server
 app.listen(port,function(err){
     if(err){

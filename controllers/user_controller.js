@@ -1,23 +1,6 @@
 const User = require("../models/user");
 
 module.exports.profile = function (req, res) {
-    // if(req.cookies.user_id){
-    //     User.findById(req.cookies.user_id,function(err,user){
-    //         if(user){
-    //             return res.render('profile',{
-    //                 title:"profile page",
-    //                 user:user
-    //             })
-    //         }
-    //         else{
-    //             return res.redirect('signIn');
-    //         }
-    //     })
-    // }
-    // else{
-    //     console.log('pehle data to dal be !!! ;() ');
-    //     return res.redirect('signIn');
-    // }
     User.findById(req.params.id,function(err,user){
         return res.render('profile', {
             title: "profile page",
@@ -30,7 +13,7 @@ module.exports.signUp = function (req, res) {
         return res.redirect('/user/profile');
     }
     return res.render('user_sign_up', {
-        title: "todo | Sign Up"
+        title: "SM ! Sign Up"
     })
 }
 
@@ -41,7 +24,7 @@ module.exports.signIn = function (req, res) {
     }
 
     return res.render('user_sign_in', {
-        title: "todo | sign In"
+        title: "SM ! Sign In"
     })
 
 }
@@ -74,12 +57,14 @@ module.exports.create_user = function (req, res) {
 
 // sign in and create a session for the user
 module.exports.createSession = function (req, res) {
+    req.flash('success','logged in successfully');
     return res.redirect('/');
 }
 
 //to sign out the user
 module.exports.destroySession =function(req,res){
     req.logout();
+    req.flash('success','session destroyed');
     return res.redirect('/');
 }
 

@@ -1,34 +1,35 @@
 const Post = require("../models/post");
 const  Comment= require('../models/comment');
-module.exports.create = function (req, res) {
-      Post.create({
-          content : req.body.content,
-          user : req.user._id
-      },function(err,post){
-          if(err){console.log('error in creating a post , enter some data');return res.redirect('back');}
-          return res.redirect('back');
-      })
+module.exports.create =async function (req, res) {
+    try {
+        await Post.create({
+            content : req.body.content,
+            user : req.user._id
+        })
+
+        req.flash('success','Post Published !')
+        return res.redirect('back');
+    }catch (err) {
+        req.flash('error','Error in creating a post');
+        return res.redirect('back');
+    }
 }
 
-module.exports.destroy = function(req,res){
-
-    Post.findById(req.params.id,function(err,post){
-
-        console.log(post);
-        if(err){
-            console.log("err in finding the post !!!");return;;
-        }
+module.exports.destroy =async function(req,res){
+   try {
+    let post= await Post.findById(req.params.id)
         //here we use user.id instead of user._id because user.id convertes object  id into the string 
         if(post.user==req.user.id){
-            console.log('post and the comments related to the post have been deleted')
             post.remove();
-            Comment.deleteMany({post : req.params.id},function(err){
-                return res.redirect('back');
-            })
-        }
-        else{
-            console.log('you  are not the admin of this post')
+            await Comment.deleteMany({post : req.params.id});
+            req.flash('success','Post And Related Comments are Deleted !')
+            return res.redirect('back');
+        } else {
+            req.flash('error','You Are Not The Authorised User !')
             return res.redirect('back');
         }
-    })
+   } catch (err) {
+    req.flash('error','Error in destroying the post');
+       return res.redirect('/');
+   }
 }
