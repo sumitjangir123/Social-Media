@@ -50,6 +50,7 @@ module.exports.create_user = function (req, res) {
             })
         }
         else {
+            req.flash('error','User Is Already Registered')
             return res.redirect('back');
         }
     })

@@ -7,22 +7,33 @@
                         <textarea name="content" cols="30" rows="10" placeholder="Remember , be nice !"></textarea>
                         <input type="submit" value="post">
                 </form>
-                <%}%>
-            <h4>posts till now</h4>
-                 <ul>
-                                <%- include('_post') -%>
-                </ul>
+                <% } %>
 
+                <h4>posts till now</h4>
+                
+                <div id="posts-list-container">
+                        <ul>
+                            <% for(i of post_list){ %>
+                                
+                            <%- include('_post') -%>
+                                
+                            <%} %>
+                        </ul>
+                </div>
+                
         </section>
 
         <section id="user-friends">
                 <h4>Friends</h4>
                 <ul>
                         <% for(u of  users_list) {%>
-                        <li>
-                                <p><a href="/user/profile/<%=u.id%>"><%=u.name%></a></p>
-                        </li>
-                        <%}%>
+                                <li>
+                                        <p><a href="/user/profile/<%=u.id%>"><%=u.name%></a></p>
+                                </li>
+                                <%}%>
                 </ul>
         </section>
 </div>
+
+<script src="/js/home_post_comments.js"></script>
+<script src="/js/home_posts.js"></script>

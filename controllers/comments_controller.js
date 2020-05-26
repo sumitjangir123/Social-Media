@@ -14,6 +14,19 @@ module.exports.create =async function(req,res){
             
                 post.comment.push(comment);
                 post.save();
+
+                if (req.xhr){
+                    // Similar for comments to fetch the user's id!
+                    comment = await comment.populate('user', 'name').execPopulate();
+        
+                    return res.status(200).json({
+                        data: {
+                            comment: comment
+                        },
+                        message: "Post created!"
+                    });
+                }
+                req.flash('success', 'Comment published!');
                 res.redirect('/');
         }
     } catch (err) {
@@ -33,13 +46,22 @@ module.exports.destroy =async function(req,res){
         //find a post using the postId
         let post =await Post.findById(postId);
 
+        
             //if the user of post wants to delete any unappropriate comment from that post that is commented by anyone so for that kind of authorisation
             if(post.user==req.user.id){
                 //comment deleted
                 comment.remove();
                 //comment id is also poped out from the array of comments
-               let post = Post.findByIdAndUpdate(postId,{$pull : {comment : req.params.id}});
-               req.flash('success','Comment is destroyed');
+                let post = Post.findByIdAndUpdate(postId,{$pull : {comment : req.params.id}});
+                if (req.xhr){
+                    return res.status(200).json({
+                        data: {
+                            comment_id: req.params.id
+                        },
+                        message: "Post deleted"
+                    });
+                }
+                req.flash('success','Comment is destroyed');
                 return res.redirect('back');
             }
             //if user who is commented on any post and want to take back that comment or wants to delete that comment than he/she is able to do that :)
@@ -47,6 +69,14 @@ module.exports.destroy =async function(req,res){
                 if(comment.user==req.user.id){
                     comment.remove();
                     let post = Post.findByIdAndUpdate(postId,{$pull : {comment : req.params.id}});
+                    if (req.xhr){
+                        return res.status(200).json({
+                            data: {
+                                comment_id: req.params.id
+                            },
+                            message: "Post deleted"
+                        });
+                    }
                     req.flash('success','Comment is destroyed');
                     return res.redirect('back');
                 }
@@ -55,6 +85,10 @@ module.exports.destroy =async function(req,res){
                     return res.redirect('back');
                 }
             }
+
+             // send the comment id which was deleted back to the views
+          
+
     } catch (err) {
         req.flash('error','Error in deleting the comment !');
         return res.redirect('back');
