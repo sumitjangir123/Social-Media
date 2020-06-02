@@ -3,11 +3,11 @@
 
       <div id="heading-control">
         <% if(locals.user){%>
-          <p><a href="/user/profile/<%=user.id%>"><%=user.name%></a></p>
-          <p><a href="/user/signOut"> sign out </a></p>
+          <p><a href="/users/profile/<%=user.id%>"><%=user.name%></a></p>
+          <p><a href="/users/signOut"> sign out </a></p>
         <%}else {%>
-          <p><a href="/user/signIn">Sign In</a></p>
-          <p><a href="/user/signUp">Sign Up</a></p>
+          <p><a href="/users/signIn">Sign In</a></p>
+          <p><a href="/users/signUp">Sign Up</a></p>
         <%}%>
         </div>
 </header>
