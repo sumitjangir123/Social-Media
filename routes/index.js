@@ -8,8 +8,9 @@ console.log("router loaded !!");
 const homeController=require('../controllers/home_controller');
 
 router.get("/",homeController.home);
-router.use("/user",require("./users"));
+router.use("/users",require("./users"));
 router.use("/post",require("./posts"));
 router.use("/comment",require('./comments'));
+router.use("/api",require('./api'));
 //make it for outer index.js
 module.exports =router;
