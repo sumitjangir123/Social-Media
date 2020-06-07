@@ -9,7 +9,7 @@ let transporter = nodemailer.createTransport({
     secure: false, // true for 465, false for other ports
     auth: {
       user: 'thethunderbirdus@gmail.com',
-      pass: 'na munna na :)'
+      pass: 'thunderbird1234'
     }
 });
 
@@ -19,7 +19,7 @@ let renderTemplate= (data,relativePath) => {
         path.join(__dirname,'../views/mailers',relativePath),
         data,
         function(err,template){
-            if(err){console.log('error in rendering template'); return;}
+            if(err){console.log('error in rendering template',err); return;}
             mailHtml= template;
         }
     )

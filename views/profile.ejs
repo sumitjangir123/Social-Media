@@ -1,6 +1,6 @@
 <% if(locals.user.id == profile_user._id){%>
     <h4>Wants to update something ...</h4>
-    <img src="<%=user.avatar%>" alt="<%=user.name%>" style="width: 100px; height: 100px; border-radius: 50px;">
+    <img src="<%=user.avatar%>" alt="<%=user.name%>" style="width: 100px; height: 100px; border-radius: 50px;" class="animated flip fast img-fluid z-depth-5">
     <form action="/users/profile/update/<%=profile_user.id%>" enctype="multipart/form-data" method="POST">
         <input type="text" placeholder="enter your name..." name="name" required>
         <input type="email" name="email" placeholder="enter your mail" required>

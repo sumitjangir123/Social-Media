@@ -1,7 +1,5 @@
 .sign-in-heading {
-  font-family: cursive;
-  text-align: center;
-  text-shadow: 2px 2px gray; }
+  text-align: center; }
 
 #quality {
   display: flex;
@@ -24,79 +22,6 @@
     transition: 0.2s; }
 
 #sign-in-outer {
-  text-align: center;
-  display: block;
-  position: relative;
-  margin-bottom: 100px; }
-  #sign-in-outer #sign-in-section {
-    display: inline-block;
-    width: 50vw;
-    height: 25rem;
-    background-color: #25383e;
-    border-radius: 20px;
-    margin-top: 50px;
-    font-size: 20px; }
-    #sign-in-outer #sign-in-section #form-section {
-      display: flex;
-      margin-top: 20px;
-      justify-content: center;
-      color: white; }
-      #sign-in-outer #sign-in-section #form-section form {
-        width: 75%; }
-      #sign-in-outer #sign-in-section #form-section .sign-in-input {
-        width: 100%;
-        padding: 10px;
-        border-radius: 20px;
-        font-size: 20px;
-        padding-left: 20px;
-        border: none;
-        outline: none;
-        box-shadow: 0px 0px 10px 1px grey;
-        transition: 0.3s;
-        background-color: #e8f0fe; }
-      #sign-in-outer #sign-in-section #form-section .sign-in-input:hover {
-        box-shadow: 0px 0px 0px 0px black;
-        transition: 0.5s; }
-      #sign-in-outer #sign-in-section #form-section #sign-in-submit {
-        cursor: pointer;
-        border-radius: 50px;
-        background-color: #f4511e;
-        border: none;
-        color: white;
-        font-size: 20px;
-        padding: 10px;
-        width: 190px;
-        margin-top: 35px;
-        outline: none; }
-        #sign-in-outer #sign-in-section #form-section #sign-in-submit .fa-space-shuttle {
-          padding: 4px;
-          position: absolute; }
-        #sign-in-outer #sign-in-section #form-section #sign-in-submit span {
-          display: inline-block;
-          position: relative;
-          transition: 0.5s;
-          padding-right: 20px; }
-        #sign-in-outer #sign-in-section #form-section #sign-in-submit span:after {
-          content: '\00bb';
-          position: absolute;
-          opacity: 0;
-          right: -50px;
-          transition: 0.5s; }
-      #sign-in-outer #sign-in-section #form-section #sign-in-submit:hover span {
-        padding-right: 20px; }
-      #sign-in-outer #sign-in-section #form-section #sign-in-submit:hover span:after {
-        opacity: 1;
-        right: 0; }
-    #sign-in-outer #sign-in-section #sign-in-logo {
-      display: inline-block;
-      background-color: #25383e;
-      width: 30%;
-      color: white;
-      margin-top: -28px;
-      border-radius: 50px;
-      box-shadow: 0px 5px 10px 1px black; }
-      #sign-in-outer #sign-in-section #sign-in-logo p {
-        font-weight: bold;
-        font-size: 20px;
-        padding: 15px;
-        margin: 0px; }
+  background-image: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img(11).jpg");
+  display: flex;
+  justify-content: center; }
