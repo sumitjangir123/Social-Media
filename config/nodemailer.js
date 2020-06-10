@@ -9,7 +9,7 @@ let transporter = nodemailer.createTransport({
     secure: false, // true for 465, false for other ports
     auth: {
       user: 'thethunderbirdus@gmail.com',
-      pass: 'thunderbird1234'
+      pass: ''
     }
 });
 

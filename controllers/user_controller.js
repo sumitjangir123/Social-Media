@@ -1,7 +1,10 @@
 const User = require("../models/user");
 const fs = require('fs');
 const path = require('path');
-// const { use } = require("passport");
+const queue = require('../config/kue');
+const resetPasswordEmail = require('../workers/reset_password_email');
+const ResetPasswordToken = require('../models/reset_password_token');
+const crypto = require('crypto');
 module.exports.profile = function (req, res) {
     User.findById(req.params.id, function (err, user) {
         return res.render('profile', {
@@ -112,4 +115,100 @@ module.exports.update = async function (req, res) {
         return res.status(401).send('Unauthorized');
     }
 
+}
+
+module.exports.EnterMail = function (req, res) {
+    res.render('enterMail', {
+        title: 'Reset Your Password'
+    })
+}
+
+module.exports.resetPassword = async function (req, res) {
+    try {
+        let user = await User.findOne({ email: req.body.email });
+
+        if (user) {
+            let resetToken = await ResetPasswordToken.create({
+                user: user._id,
+                token: crypto.randomBytes(20).toString('hex'),
+                isValid: true
+            });
+
+            resetToken = await resetToken.populate('user', 'name email').execPopulate();
+            // commentsMailer.newComment(comment);
+
+            let job = queue.create('passQueue', resetToken).save(function (err) {
+                if (err) { console.log('error in creating a queue', err); return; }
+
+                console.log('job enqueued', job.id)
+            })
+
+            req.flash('success', 'check your email account, your token will be expire in 5 mins');
+            return res.redirect('back');
+
+        } else {
+            req.flash('error', 'Looks like the user is not registered!');
+            return res.redirect('back');
+        }
+    } catch (error) {
+        console.log('Error', error); return;
+    }
+}
+
+module.exports.resetForm = async function (req, res) {
+    // console.log(req.params.token);
+    let resetPasswordToken = await ResetPasswordToken.findOne({ token: req.params.token });
+
+    if (resetPasswordToken) {
+        if (resetPasswordToken.isValid == true) {
+
+            let doc = {
+                isValid: false,
+                updatedAt: Date.now(),
+            }
+
+            ResetPasswordToken.findByIdAndUpdate(resetPasswordToken.id, doc, function (err, raw) {
+                return res.render('passResForm', {
+                    title: 'Enter your password',
+                    token: req.params.token
+                });
+            });
+        } else {
+            console.log('your token has been expired');
+            req.flash('error', 'your token has been expired ! Generate a new one');
+            return res.redirect('back');
+        }
+    }else{
+        req.flash('error','your token has been expired');
+        return res.redirect('back');
+    }
+}
+
+module.exports.setNewPass = async function (req, res) {
+    try {
+
+        if(req.body.password!=req.body.confirm_password){
+            req.flash('error','bhai password to sahi daal de :(');
+            return res.redirect('back');
+        }
+
+        let user= await ResetPasswordToken.findOne({ token: req.body.token });
+
+        if (user) {
+            user= await user.populate('user').execPopulate();
+
+            let pass = {
+                password: req.body.password
+            }
+            
+            User.findByIdAndUpdate(user.user.id, pass, function (err, raw) {
+                req.flash('success', 'Woo-hoo! your password has been changed');
+                return res.redirect('/users/signIn');
+            });
+        } else {
+            console.log('user not found'); return;
+        }
+    } catch (error) {
+        console.log('error', error); return;
+    }
 }

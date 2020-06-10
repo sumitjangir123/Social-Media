@@ -12,6 +12,7 @@ const passport= require('passport');
 const passportLocal= require('./config/passport-local-strategy');
 const passportJWT= require('./config/passport-jwt-strategy');
 const passportGoogle= require('./config/passport-google-oauth2-strategy');
+const passportFacebook= require('./config/passport-facebook-oauth2-strategy');
 //here we use mongo store to store session cookie b'coz don't want to remove session cookie at every server restart ;)
 const MongoStore= require('connect-mongo')(session);
 const sassMiddleware= require('node-sass-middleware');

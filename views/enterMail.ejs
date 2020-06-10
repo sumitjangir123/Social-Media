@@ -1,0 +1,25 @@
+    <div class="m-5 d-flex flex-wrap justify-content-center">
+
+        <div class="bg-warning img-fluid z-depth-2 mx-4 mb-2 animated tada" style="width: 500px;">
+            <h1 class="p-4" >Forgot your password?</h1>
+            <p class="py-1 px-4 ">Don't worry. Resetting your password is easy, just tell us the email address you registered with <span style="color: red;"> Thunder Bird.</span></p>
+        </div>
+    
+        <div class=" mx-4 img-fluid z-depth-2 " style="width: 500px;">
+            <form action="/users/reset-password" method="POST" class="px-3">
+    
+                <!-- email -->
+                <div class="md-form my-5">
+                    <i class="fas fa-envelope prefix"></i>
+                    <input type="email" name="email" id="inputIconEx1" class="form-control" required>
+                    <label for="inputIconEx1">E-mail address</label>
+                </div>
+    
+                <button class="btn btn-danger rounded-pill w-50 ml-4">Send</button>
+            </form>
+        </div>
+    </div>
+
+
+<p class="d-flex justify-content-center"><a href="/">Back to home</a></p>
+<hr class="bg-secondary w-50">
