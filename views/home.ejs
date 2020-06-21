@@ -1,39 +1,92 @@
 <link rel="stylesheet" href="/css/home.css">
+<link rel="stylesheet" href="/css/chat_box.css">
 <div id="home-container">
         <section id="feed-posts">
                 <% if(locals.user){%>
-                <h4>Posts</h4>
-                <form action="post/create" id="new-post-form" method="POST">
-                        <textarea name="content" cols="30" rows="10" placeholder="Remember , be nice !"></textarea>
-                        <input type="submit" value="post">
+                <p>What's in your mind, post something !</p>
+                <form action="post/create" id="new-post-form" method="POST" class="border p-1">
+
+                        <div class="md-form">
+                                <i class="prefix fas fa-american-sign-language-interpreting "></i>
+                                <textarea type="text" name="content" id="post" class="md-textarea form-control"
+                                        mdbInput></textarea>
+                                <label for="post">Remember , be nice !</label>
+                        </div>
+                        <button type="submit" value="post" class="btn btn-primary btn-md">Post</button>
                 </form>
                 <% } %>
 
                 <h4>posts till now</h4>
-                
+
                 <div id="posts-list-container">
                         <ul>
-                            <% for(i of post_list){ %>
-                                
-                            <%- include('_post') -%>
-                                
-                            <%} %>
+                                <% for(i of post_list){ %>
+
+                                <%- include('_post') -%>
+
+                                <%} %>
                         </ul>
                 </div>
-                
+
         </section>
 
-        <section id="user-friends">
-                <h4>Friends</h4>
-                <ul>
-                        <% for(u of  users_list) {%>
+        <section id="user-friends" class="z-depth-2">
+                <div>
+                        <h4>Users</h4>
+                        <input class="form-control mr-sm-2" id="myInput" onkeyup="findFriends()" type="text"
+                                placeholder="Search for users.." aria-label="Search" title="Find Users">
+                        <ul id="myUL">
+                                <% for(u of  users_list) {%>
                                 <li>
-                                        <p><a href="/users/profile/<%=u.id%>"><%=u.name%></a></p>
+                                        <p><a href="/users/profile/<%=u.id%>"><%=u.name%></a>
+                                                <%if(locals.user && user.id!=u.id){%>
+                                                        <% let temp='false'%>
+
+                                                        <%for(j of user.friendships) {%>
+                                                        <!-- here you will get to know that in add friend controller we have added request in both the user from and to with same schema so for that ( || ) used -->
+                                                                <%if(u.id==j.to_user || u.id==j.from_user){%>
+                                                                        <%temp='true'%>
+                                                                        <%break%>
+                                                                <%}%>
+                                                        <%}%>
+                                                        
+                                                        <%if(temp=='false'){%>
+                                                                <span><a href="/users/addFriend/?from=<%=user._id%>&to=<%=u._id%>"style="color: red;">&nbsp;<i class="fas fa-user-plus"></i></a></span>
+
+                                                        <%}%>
+                                                <%}%>
+                                               
+                                        </p>
                                 </li>
-                        <%}%>
-                </ul>
+                                <%}%>
+                        </ul>
+                </div>
+                <div>
+                        <h4>Friends</h4>
+                </div>
         </section>
 </div>
 
+<%- include('_chat_box') -%>
+
+
 <script src="/js/home_post_comments.js"></script>
 <script src="/js/home_posts.js"></script>
+<script src="/js/home.js"></script>
+
+
+<script src="/js/toggle_likes.js"></script>
+<script>
+        $('.toggle-like-button').each(function () {
+                let self = this;
+                let toggleLike = new ToggleLike(self);
+        });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+<script src="/js/chat_engine.js"></script>
+
+<%if(locals.user){%>
+<script>
+        new ChatEngine('user-chat-box', '<%=locals.user.email%>')
+</script>
+<%}%>

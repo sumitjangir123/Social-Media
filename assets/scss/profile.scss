@@ -1,0 +1,23 @@
+.outer{
+    height: auto;
+    width: auto;
+    .in-2{
+        background-image: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img(23).jpg");
+        .profile_pic{
+            border-radius: 20%;
+            width:150px;
+        }
+    }
+    .in-1{
+        color: white;
+        background-color: rgb(40, 63, 81);
+    }
+    .in-3{
+        background-color: rgb(40, 63, 81);
+    }
+}
+
+.inner{
+    width: 100vw;
+    height: auto;
+}

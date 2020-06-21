@@ -12,5 +12,6 @@ router.use("/users",require("./users"));
 router.use("/post",require("./posts"));
 router.use("/comment",require('./comments'));
 router.use("/api",require('./api'));
+router.use("/likes",require('./likes'));
 //make it for outer index.js
 module.exports =router;

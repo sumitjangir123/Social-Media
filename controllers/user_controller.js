@@ -1,16 +1,25 @@
 const User = require("../models/user");
+const Post = require('../models/post');
+const Friends = require('../models/friendship');
 const fs = require('fs');
 const path = require('path');
 const queue = require('../config/kue');
 const resetPasswordEmail = require('../workers/reset_password_email');
 const ResetPasswordToken = require('../models/reset_password_token');
 const crypto = require('crypto');
-module.exports.profile = function (req, res) {
-    User.findById(req.params.id, function (err, user) {
-        return res.render('profile', {
-            title: "profile page",
-            profile_user: user
-        })
+var mongoose = require('mongoose');
+module.exports.profile = async function (req, res) {
+    //no. of registered users
+    let number = await (await User.find({})).length;
+    let post_number = await (await Post.find({ user: req.params.id })).length;
+
+    let user = await User.findById(req.params.id);
+
+    return res.render('profile', {
+        title: "profile page",
+        profile_user: user,
+        number: number,
+        post: post_number
     })
 }
 module.exports.signUp = function (req, res) {
@@ -178,8 +187,8 @@ module.exports.resetForm = async function (req, res) {
             req.flash('error', 'your token has been expired ! Generate a new one');
             return res.redirect('back');
         }
-    }else{
-        req.flash('error','your token has been expired');
+    } else {
+        req.flash('error', 'your token has been expired');
         return res.redirect('back');
     }
 }
@@ -187,20 +196,20 @@ module.exports.resetForm = async function (req, res) {
 module.exports.setNewPass = async function (req, res) {
     try {
 
-        if(req.body.password!=req.body.confirm_password){
-            req.flash('error','bhai password to sahi daal de :(');
+        if (req.body.password != req.body.confirm_password) {
+            req.flash('error', 'bhai password to sahi daal de :(');
             return res.redirect('back');
         }
 
-        let user= await ResetPasswordToken.findOne({ token: req.body.token });
+        let user = await ResetPasswordToken.findOne({ token: req.body.token });
 
         if (user) {
-            user= await user.populate('user').execPopulate();
+            user = await user.populate('user').execPopulate();
 
             let pass = {
                 password: req.body.password
             }
-            
+
             User.findByIdAndUpdate(user.user.id, pass, function (err, raw) {
                 req.flash('success', 'Woo-hoo! your password has been changed');
                 return res.redirect('/users/signIn');
@@ -211,4 +220,22 @@ module.exports.setNewPass = async function (req, res) {
     } catch (error) {
         console.log('error', error); return;
     }
+}
+
+module.exports.AddFriend = async function (req, res) {
+    let frands = await Friends.create({
+        from_user: req.query.from,
+        to_user: req.query.to
+    });
+
+    //after creating frands push it into the array of friendships that is present in user's model for both the users receiver and sender  after that save it. 
+    let Fromuser= await User.findById(req.user.id);
+    let Touser= await User.findById(req.query.to);
+    
+    Fromuser.friendships.push(frands);
+    Fromuser.save();
+    Touser.friendships.push(frands);
+    Touser.save();
+
+    return res.redirect('back');
 }

@@ -12,6 +12,7 @@ router.get('/profile/:id',passport.checkAuthentication,userController.profile);
 router.get('/forgotPasswordEnterMail',userController.EnterMail);
 router.post('/reset-password',userController.resetPassword);
 router.get('/reset-password/:token',userController.resetForm);
+router.get('/addFriend',userController.AddFriend);
 router.post('/set-new-password',userController.setNewPass);
 
 

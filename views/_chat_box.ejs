@@ -1,0 +1,22 @@
+<% if (locals.user){ %>
+	<div id="user-chat-box" class="animated bounceInUp z-depth-5">
+		<div id="topper" class="z-depth-2">
+			<p id="user-chat-box-header">Chat with us, we are online!</p>
+		</div>
+		<ul id="chat-messages-list" class="p-2">
+			<li class="other-message">
+				<span>
+					good to see you here
+				</span>
+			</li>
+			<li class="self-message">
+				<span>hii</span>
+			</li>
+
+		</ul>
+		<div id="chat-message-input-container" class="m-2">
+				<input type="text" name="text" id="chat-message-input" class="form-control rounded" placeholder="type something here..."> 
+				<button type="submit" id="send-message" class="btn btn-md btn-success rounded-pill">Send</button>
+		</div>
+	</div>
+<% } %>

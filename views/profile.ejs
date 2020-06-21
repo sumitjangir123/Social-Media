@@ -1,14 +1,90 @@
+<link rel="stylesheet" href="/css/profile.css">
 <% if(locals.user.id == profile_user._id){%>
-    <h4>Wants to update something ...</h4>
-    <img src="<%=user.avatar%>" alt="<%=user.name%>" style="width: 100px; height: 100px; border-radius: 50px;" class="animated flip fast img-fluid z-depth-5">
-    <form action="/users/profile/update/<%=profile_user.id%>" enctype="multipart/form-data" method="POST">
-        <input type="text" placeholder="enter your name..." name="name" required>
-        <input type="email" name="email" placeholder="enter your mail" required>
-        <input type="file" name="avatar" placeholder="Profile Picture">
-        <input type="submit">
-    </form>
+
+<div class="d-flex flex-wrap outer">
+
+    <div class="inner in-1 d-flex justify-content-between">
+
+        <div class="p-4" style="color: rgb(193, 199, 205); font-weight: bold;">
+            <p>We are happy to welcome over <span id="value1" class="zoom" style="font-weight: bolder; color: red;"><%=number%></span> users to present on the industry's
+                latest technologies. <br>
+                prepare for an inspiration extravaganza.
+            </p>
+
+        </div>
+        <div class="p-4">
+            <p style="color: rgb(172, 207, 255); font-weight: bold;"><%=user.createdAt%> <br>
+            <p style="color: white; font-family: cursive;"><%=user.email%> <br> <br>
+                <%=user.id%>
+            </p>
+            </p>
+        </div>
+    </div>
+    <div class="inner in-2">
+        <div class="d-flex justify-content-center"><p style="font-size:25px; color: rgb(40, 63, 81);"><%=user.name%></p></div>
+        <div class="d-flex justify-content-between p-3">
+            <div class="">
+                <img src="<%=user.avatar%>" alt="<%=user.name%>" class="animated zoomIn profile_pic z-depth-4">
+            </div>
+            <div>
+                <p>statistics:</p>
+                <p>you have created <span id="value2" style="font-weight: bolder; color: red;" class="zoom"><%=post%></span> posts till now</p>
+            </div>
+        </div>
+    </div>
+    <div class="inner in-3">
+
+        <div class="z-depth-1 p-4">
+            <p>Update Profile</p>
+            <form action="/users/profile/update/<%=profile_user.id%>" enctype="multipart/form-data" method="POST">
+                <input type="text" placeholder="enter your name..." name="name" required>
+                <input type="email" name="email" placeholder="enter your mail" required>
+                <input type="file" name="avatar" placeholder="Profile Picture">
+                <input type="submit">
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
 <%}else{%>
-        <h4>Details : </h4>
-    <h3>email : <%=profile_user.email%></h3>
-    <h3>user id : <%=profile_user._id%></h3>
+<h4>Details : </h4>
+<h3>email : <%=profile_user.email%></h3>
+<h3>user id : <%=profile_user._id%></h3>
 <%}%>
+
+
+
+
+        <!-- <div class="leftSide z-depth-1 m-2 d-flex justify-content-center flex-wrap p-2">
+           <div class="p-4 font-weight-bold">
+            <p>ABOUT ME :</p>
+            <hr>
+            <p>Name : <%=user.name%></p>
+<p>Mail : <%=user.email%></p>
+<p>Id : <%=user.id%></p>
+<p>createdAt : <%=user.createdAt%></p>
+</div>
+</div>
+
+<div class="rightSide">
+
+    <div class="rs bg-warning m-1 z-depth-1">
+
+    </div>
+    <div class="rs bg-warning m-1 z-depth-1 p-4">
+        <p>Update Profile</p>
+        <form action="/users/profile/update/<%=profile_user.id%>" enctype="multipart/form-data" method="POST">
+            <input type="text" placeholder="enter your name..." name="name" required>
+            <input type="email" name="email" placeholder="enter your mail" required>
+            <input type="file" name="avatar" placeholder="Profile Picture">
+            <input type="submit">
+        </form>
+    </div>
+</div> -->
+
+<script src="/js/profile.js"></script>

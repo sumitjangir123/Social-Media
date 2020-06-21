@@ -1,30 +1,38 @@
-const db=require('../config/mongoose');
+const db = require('../config/mongoose');
 const Post = require("../models/post");
-const User = require("../models/user")
+const User = require("../models/user");
+const Like = require('../models/like');
+const { localsName } = require('ejs');
 //home controller
-module.exports.home=async function(req,res){
-
+module.exports.home = async function (req, res) {
     try {
         //populate the user of each post
-    let post_list= await Post.find({})
-    .sort('-createdAt')
-    .populate('user')
-    .populate({
-        path : 'comment',
-        populate: {
-            path : 'user'
+        let post_list = await Post.find({})
+            .sort('-createdAt')
+            .populate('user')
+            .populate({
+                path: 'comment',
+                populate: {
+                    path: 'user likes'
+                }
+            }).populate('likes');
+        
+        //populate users
+        let users = await User.find({});
+      
+        //populate the array of friendships that is present in users schema but only if user is signed in
+        if(req.user){
+            await req.user.populate('friendships').execPopulate();
         }
-    });
-   
-    let users =await User.find({});
+    
 
-    return res.render('home',{
-        post_list: post_list,
-        users_list : users,
-        title:"Social Media"
-    });
+        return res.render('home', {
+            post_list: post_list,
+            users_list: users,
+            title: "Social Media"
+        });
     } catch (err) {
-        console.log('Error',err);
+        console.log('Error', err);
         return;
     }
 }

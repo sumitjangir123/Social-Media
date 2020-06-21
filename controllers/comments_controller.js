@@ -1,8 +1,9 @@
 const Post = require('../models/post');
 const Comment = require('../models/comment');
+const Like = require('../models/like');
 const commentsMailer = require('../mailers/comments_mailer');
-const commentEmailWorker= require('../workers/comment_email_worker');
-const queue= require('../config/kue');
+const commentEmailWorker = require('../workers/comment_email_worker');
+const queue = require('../config/kue');
 module.exports.create = async function (req, res) {
     try {
         let post = await Post.findById(req.body.post);
@@ -20,10 +21,10 @@ module.exports.create = async function (req, res) {
             comment = await comment.populate('user', 'name email').execPopulate();
             // commentsMailer.newComment(comment);
 
-            let job = queue.create('emails',comment).save(function(err){
-                if(err){console.log('error in creating a queue',err); return;}
+            let job = queue.create('emails', comment).save(function (err) {
+                if (err) { console.log('error in creating a queue', err); return; }
 
-                console.log('job enqueued',job.id)
+                console.log('job enqueued', job.id)
             })
             if (req.xhr) {
                 // Similar for comments to fetch the user's id!
@@ -59,10 +60,18 @@ module.exports.destroy = async function (req, res) {
 
         //if the user of post wants to delete any unappropriate comment from that post that is commented by anyone so for that kind of authorisation
         if (post.user == req.user.id) {
+
+            await Like.deleteMany({
+                likeable: comment._id,
+                onModel: 'Comment'
+            });
+
             //comment deleted
             comment.remove();
+
             //comment id is also poped out from the array of comments
-            let post = Post.findByIdAndUpdate(postId, { $pull: { comment: req.params.id } });
+            let post = await Post.findByIdAndUpdate(postId, { $pull: { comment: req.params.id } });
+
             if (req.xhr) {
                 return res.status(200).json({
                     data: {
@@ -78,7 +87,7 @@ module.exports.destroy = async function (req, res) {
         else {
             if (comment.user == req.user.id) {
                 comment.remove();
-                let post = Post.findByIdAndUpdate(postId, { $pull: { comment: req.params.id } });
+                let post = await Post.findByIdAndUpdate(postId, { $pull: { comment: req.params.id } });
                 if (req.xhr) {
                     return res.status(200).json({
                         data: {
