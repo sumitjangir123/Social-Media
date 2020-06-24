@@ -2,12 +2,13 @@ const passport= require('passport');
 const facebookStrategy= require('passport-facebook');
 const crypto= require('crypto');
 const User= require('../models/user');
+const env= require('./environment');
 
 //tell passport to use a new strategy for facebook login 
 passport.use(new facebookStrategy({
-    clientID: "549980429009358",
-    clientSecret: "",
-    callbackURL: "http://localhost:8000/users/auth/facebook/callback",
+    clientID: env.facebook_client_id,
+    clientSecret:env.facebook_client_secret,
+    callbackURL: env.facebook_call_back_url,
     profileFields: ['id','emails', 'first_name', 'last_name', 'displayName', 'link', 'photos' ]
   },
   function(accessToken, refreshToken, profile, cb) {

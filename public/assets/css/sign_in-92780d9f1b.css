@@ -1,0 +1,27 @@
+.sign-in-heading {
+  text-align: center; }
+
+#quality {
+  display: flex;
+  justify-content: center; }
+  #quality p {
+    margin: 10px;
+    background: linear-gradient(to right, #06beb6, #48b1bf);
+    border-radius: 5px;
+    padding: 15px;
+    color: white;
+    font-weight: bold;
+    font-family: cursive;
+    box-shadow: 7px 7px 10px -5px #25383e;
+    transition-duration: 1s; }
+    #quality p span {
+      color: greenyellow;
+      font-size: 20px; }
+  #quality p:hover {
+    box-shadow: 0px -5px 10px 0px white;
+    transition: 0.2s; }
+
+#sign-in-outer {
+  background-image: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img(11).jpg");
+  display: flex;
+  justify-content: center; }
