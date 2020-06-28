@@ -75,4 +75,4 @@ const production= {
 }
 
 // eval(process.env.THUNDER_ENVIRONMENT)==undefined ? development : eval(process.env.THUNDER_ENVIRONMENT)
-module.exports=  eval(process.env.THUNDER_ENVIRONMENT)==undefined ? development : eval(process.env.THUNDER_ENVIRONMENT);
+module.exports=  development;

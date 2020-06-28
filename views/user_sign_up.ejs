@@ -1,50 +1,49 @@
-<link rel="stylesheet" href="<%=assetPath('css/sign_up.css') %>">
-<div id="quality">
-    <p><span><i class="far fa-check-circle"></i></span> Fully Secured</p>
-    <p><span><i class="far fa-check-circle"></i></span> Find Local Friends</p>
-    <p><span><i class="far fa-check-circle"></i></span> Free Of Cost</p>
-</div>
+<link rel="stylesheet" href="<%=assetPath('css/sign_in.css') %>">
 
+<section class="sign-section">
 
-                <!-- <p><span><i class="fas fa-envelope"></i></span> User Name</p>
-                <input type="text" name="name" placeholder="your name" class="sign-up-input" required> -->
-                <!-- <p><span><i class="fas fa-envelope"></i></span> User Email</p>
-                <input type="email" name="email" placeholder="your email"  class="sign-up-input" required>
-                <p><span><i class="fas fa-key"></i></span> User Password</p>
-                <input type="password" name="password" placeholder="your password"  class="sign-up-input" required>
-                <p><span><i class="fas fa-key"></i></span> Confirm Password</p>
-                <input type="password" name="confirm_password" placeholder="confim password"  class="sign-up-input" required>
-                <button type="submit" id="sign-up-submit" value="create account"><span> Register</span> <i class="fas fa-space-shuttle"></i></button> -->
+    <div class="box2  animated rotateInUpRight">
+        <img src="<%=assetPath('images/thunderbird.png')%>" alt="thunderbird" class="common">
+        <h2 class="common">welcome to <br> thunder bird</h2>
+        <p class="common">
+           enter your details and <br> start your journey with us.
+            this is an Social media website with decent Functionalities like :
+            
+            <br><br>
+            
+            <b>1.fully secured <br> 2.Find Local Friends <br> 3.free of cost</b>
+        </p>
+    </div>
 
-<div id="sign-up-outer" class="border border-info rounded px-4 py-4 mx-5 mb-5 py-4 img-fluid fast z-depth-4 bounce animated">
-
+    <div class="box1 animated rotateInUpLeft">
+        <h2>Come Together And Share Your Mood</h2>
         <div id="form-section" class="w-75">
             <form action="/users/create_user" method="POST">
 
                 <!-- Name -->
                 <div class="md-form my-5">
-                    <i class="fa fa-user prefix"></i>
+                    <i class="fa fa-user prefix"  style="color: #00c851;"></i>
                     <input type="text" name="name" id="inputIconEx1" class="form-control" required>
                     <label for="inputIconEx1">Your Name</label>
                 </div>
 
                 <!-- email -->
                 <div class="md-form my-5">
-                    <i class="fas fa-envelope prefix"></i>
+                    <i class="fas fa-envelope prefix"  style="color: #00c851;"></i>
                     <input type="email" name="email" id="inputIconEx2" class="form-control" required>
                     <label for="inputIconEx2">E-mail address</label>
                 </div>
 
                 <!-- password -->
                 <div class="md-form">
-                    <i class="fas fa-lock prefix"></i>
+                    <i class="fas fa-lock prefix"  style="color: #00c851;"></i>
                     <input type="password" id="inputValidationEx2" name="password" class="form-control validate"
                         required>
                     <label for="inputValidationEx2" data-error="wrong" data-success="right">Type your password</label>
                 </div>
 
                 <div class="md-form">
-                    <i class="fa fa-check prefix"></i>
+                    <i class="fa fa-check prefix" style="color: #00c851;"></i>
                     <input type="password" id="inputValidationEx3" name="confirm_password" class="form-control validate"
                         required>
                     <label for="inputValidationEx3" data-error="wrong" data-success="right">Confirm Password</label>
@@ -54,10 +53,14 @@
                 <button type="submit" id="sign-in-submit" class="btn btn-success btn-md">Sign IN</button>
             </form>
 
-            <hr class="animated bg-info tada delay-2s">
-            <p>OR</p>
-            <a href="/users/auth/google"><button type="button" class="btn btn-danger">Google</button></a>
-            <a href="/users/auth/facebook"><button type="button" class="btn btn-primary">Facebook</button></a>
+           
+        </div>
+        <div class="form-section common">
+            <hr class="animated bg-info lightSpeedIn delay-1s" style="height: 1px;">
+            <a href="/users/auth/google"><button type="button" class="btn btn-danger"><i class="fab fa-google prefix"> </i>  Google</button></a>
+            <a href="/users/auth/facebook"><button type="button" class="btn btn-primary"> <i class="fab fa-facebook prefix"> </i> Facebook</button></a>
             <p class="my-4">Already have an account? <a href="/users/signIn">Sign in</a></p>
         </div>
-</div>
+    </div>
+   
+</section>

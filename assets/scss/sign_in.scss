@@ -1,123 +1,105 @@
-.sign-in-heading{
-    text-align: center;
+body{
+    font-family: sans-serif;
 }
-#quality{
-    display: flex;
-    justify-content:center;
-    p{
-        margin: 10px;
-        background: linear-gradient(to right,#06beb6 , #48b1bf);
-        border-radius: 5px;
-        padding: 15px;
-        color: white;
-        font-weight: bold;
-        font-family: cursive;
-        span{
-            color: greenyellow;
-            font-size: 20px;
-        }
-        box-shadow: 7px 7px 10px -5px #25383e;
-        transition-duration: 1s;
-    }
-    p:hover{
-        box-shadow: 0px -5px 10px 0px white;
-        transition: 0.2s;
-    }
+.common{
+    position: relative;
+    margin: 0;
+    padding: 0;
+    z-index: 2; 
 }
-
-#sign-in-outer{
+.sign-section{
     background-image: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img(11).jpg");
+    // background-image: url('../images/ultrawide.jpg');
+    background-attachment: fixed;
+    background-size: cover;
     display: flex;
-    justify-content:center;
-    // background-color: white;
-    // text-align: center;
-    // display: block;
-    // position: relative;
-    // margin-bottom: 100px;
-    // border: 1px solid gray;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    min-height: 100vh;
+    height: auto;
+    flex-wrap: wrap;
+    .box1{
+        margin: 10px;
+        border-radius: 10px;
+        position: relative;
+        max-width: 600px;
+        padding: 50px;
+        box-shadow: 0 5px 15px rgba(0,0,0,.5);
+        overflow: hidden;
+        color: #000;
+        h2{
+            position: relative;
+            margin: 0 0 20px;
+            padding: 0;
+            text-transform: uppercase;
+            z-index: 2;
+            font-size: 1rem;
+        }
+        .form-section{
+            .btn{
+                padding: 10px;
+            }          
+        }
+    };
+    
+    .box1:before{
+       content: ' ';
+       position: absolute;
+       top: -20px;
+       left: -20px;
+       right: -20px;
+       bottom: -20px;
+       background-image: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img(11).jpg");
+    //    background-image: url('../images//ultrawide.jpg');
+       background-attachment: fixed;
+       background-size: cover;
+       filter: blur(10px);
+    }
 
-    //     #form-section{
-    //         display: flex;
-    //         margin-top: 20px;
-    //         justify-content: center;
-    //         color: white;
-    //         form{
-    //             width: 75%;
-    //         }
-    //         .sign-in-input{
-    //             width: 100%;
-    //             padding:10px;
-    //             border-radius: 20px;
-    //             font-size: 20px;
-    //             padding-left: 20px;
-    //             border: none;
-    //             outline: none;
-    //             box-shadow: 0px 0px 10px 1px grey;
-    //             transition: 0.3s;
-    //             background-color: #e8f0fe;
-    //         }
-    //         .sign-in-input:hover{
-    //             box-shadow: 0px 0px 0px 0px black;
-    //             transition: 0.5s;
-    //         }
 
-    //         #sign-in-submit{
-    //             cursor: pointer;
-    //             border-radius: 50px;
-    //             background-color: #f4511e;
-    //             border: none;
-    //             color: white;
-    //             font-size: 20px;
-    //             padding: 10px;
-    //             width: 190px;
-    //             margin-top: 35px;
-    //             outline: none;
+    .box2{
+   
+        max-width: 400px;
+        height: 555px;
+        border-radius: 10px;
+        margin: 10px;
+        position: relative;
+        padding: 50px;
+        box-shadow: 0 5px 15px rgba(0,0,0,.5);
+        overflow: hidden;
+        color: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
 
-    //             .fa-space-shuttle{
-    //                 padding: 4px;
-    //                 position: absolute;
-    //             }
-    //             span {
-    //                 display: inline-block;
-    //                 position: relative;
-    //                 transition: 0.5s;
-    //                 padding-right: 20px;
-    //               }
-
-    //               span:after {
-    //                 content: '\00bb';
-    //                 position: absolute;
-    //                 opacity: 0;
-    //                 right: -50px;
-    //                 transition: 0.5s;
-    //               }
-
-    //           }
-              
-    //           #sign-in-submit:hover {
-    //             span {
-    //                 padding-right: 20px;
-    //               }
-    //               span:after {
-    //                 opacity: 1;
-    //                 right: 0;
-    //               }
-    //           }
-
-    //     #sign-in-logo{
-    //         display: inline-block;
-    //         background-color: #25383e;
-    //         width: 30%;
-    //         color: white;
-    //         margin-top: -28px;
-    //         border-radius: 50px;
-    //         box-shadow: 0px 5px 10px 1px black;
-    //         p{
-    //             font-weight: bold;
-    //             font-size: 20px;
-    //             padding: 15px;
-    //             margin: 0px;
-    //         }
-    //     }
-    // }
+        &:before{
+            content: ' ';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            background-image: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img(11).jpg");
+            background-attachment: fixed;
+            background-size: cover;
+            filter: blur(10px);
+        }
+        img{
+            border-radius: 50%;
+            width: 100px;
+            margin-right: 10px;
+        }
+        h2{
+            font-size: 20px;
+            text-transform: uppercase;
+        }
+        p{
+            text-transform: uppercase;
+            b{
+                font-weight: bold;
+            }
+        }
+    }
 }
