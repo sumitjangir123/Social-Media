@@ -950,3 +950,13 @@
 [0mGET / [36m304[0m 140.344 ms - -[0m
 [0mGET / [36m304[0m 112.225 ms - -[0m
 [0mGET / [36m304[0m 93.129 ms - -[0m
+::1 - - [02/Jul/2020:11:09:46 +0000] "GET / HTTP/1.1" 200 11019 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"
+::1 - - [02/Jul/2020:11:09:50 +0000] "GET /users/signIn HTTP/1.1" 200 10425 "http://localhost:8000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"
+::1 - - [02/Jul/2020:11:10:43 +0000] "GET /users/signIn HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"
+::1 - - [02/Jul/2020:11:10:46 +0000] "POST /users/create_session HTTP/1.1" 302 70 "http://localhost:8000/users/signIn" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"
+::1 - - [02/Jul/2020:11:10:46 +0000] "GET /users/signIn HTTP/1.1" 200 10641 "http://localhost:8000/users/signIn" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"
+::1 - - [02/Jul/2020:11:10:50 +0000] "POST /users/create_session HTTP/1.1" 302 46 "http://localhost:8000/users/signIn" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"
+::1 - - [02/Jul/2020:11:10:50 +0000] "GET / HTTP/1.1" 200 14599 "http://localhost:8000/users/signIn" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"
+::1 - - [02/Jul/2020:11:11:07 +0000] "GET /users/profile/5ef48da9319ecd0b64eca390 HTTP/1.1" 200 11665 "http://localhost:8000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"
+::1 - - [02/Jul/2020:11:11:16 +0000] "GET /users/profile/5ef48da9319ecd0b64eca390 HTTP/1.1" 304 - "http://localhost:8000/users/profile/5ef48da9319ecd0b64eca390" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"
+::1 - - [02/Jul/2020:11:11:19 +0000] "GET / HTTP/1.1" 200 14383 "http://localhost:8000/users/profile/5ef48da9319ecd0b64eca390" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"
