@@ -24,10 +24,10 @@ class ToggleLike{
                 console.log(likesCount);
                 if (data.data.deleted == true){
                     likesCount -= 1;
-                    $(self).html(`${likesCount} Likes <i class="fa fa-thumbs-down" aria-hidden="true"></i> `);
+                    $(self).html(`${likesCount} Likes <i class="far fa-heart" style="color:black;"></i>`);
                 }else{
                     likesCount += 1;
-                    $(self).html(`${likesCount} Likes <i class="fa fa-thumbs-up" aria-hidden="true"></i>`);
+                    $(self).html(`${likesCount} Likes <i class="fas fa-heart" style="color:red"></i>`);
                 }
 
 

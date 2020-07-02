@@ -7,7 +7,7 @@ var element1= document.getElementById("chat-messages-list");
 function dragElement(elmnt) {
     setTimeout(function(){ 
       elmnt.style.display="block";
-     }, 4000);
+     }, 4);
 
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
   if (document.getElementById(elmnt.id + "-header")) {
@@ -66,3 +66,21 @@ function dragElement(elmnt) {
   }
 }
 // copyrights:Sumit kumar Jangir
+
+var x= document.getElementById('hider');
+var y= document.getElementById('shower');
+var z= document.getElementById('user-chat-box');
+var e= document.getElementById('chat-message-input-container');
+function doIt(){
+    x.style.display="none";
+    y.style.display="block";
+    z.style.height="50px";
+    e.style.position="relative";
+}
+
+function doItAgain(){
+  x.style.display="block";
+  y.style.display="none";
+  z.style.height="400px";
+  e.style.position="absolute"
+}

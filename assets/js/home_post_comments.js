@@ -66,7 +66,7 @@ class PostComments {
 
                         <small>
                             <a class="toggle-like-button" data-likes="${comment.likes.length}"
-                            href="/likes/toggle/?type=Comment&id=${comment._id}">0 Likes <i class="fa fa-thumbs-down" aria-hidden="true"></i></a>
+                            href="/likes/toggle/?type=Comment&id=${comment._id}">0 Likes <i class="far fa-heart" style="color:black"></i></a>
                         </small>
                     </p>
                 </li>`);

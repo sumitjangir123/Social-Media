@@ -1,1 +1,0 @@
-var obj=document.querySelectorAll(".zoom");function animateValue(e,t,n,a){var i=n-t,o=t,r=n>t?1:-1,l=Math.abs(Math.floor(a/i)),u=document.getElementById(e),c=setInterval((function(){o+=r,u.innerHTML=o,o==n&&clearInterval(c)}),l)}for(i of obj)i.innerText>0&&animateValue(i.getAttribute("id"),0,i.innerText,1e3);

@@ -5,7 +5,6 @@ const env= require('./config/environment');
 const logger= require('morgan');
 const cookieParser= require('cookie-parser');
 const app= express();
-
 //to make helper available as locals to access them
 require('./config/view-helpers')(app);
 
@@ -32,7 +31,6 @@ const chatSockets= require('./config/chat_sockets').chatSockets(chatServer);
 chatServer.listen(5000);
 console.log("chat server is listening on port 5000");
 const path= require('path');
-
 
 if(env.name=='development'){
     app.use(sassMiddleware({

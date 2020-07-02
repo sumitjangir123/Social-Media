@@ -3,7 +3,6 @@
 	width: 350px;
 	min-height: 49px;
 	max-height: 700px;
-	overflow: hidden;
 	border-top-right-radius: 40px;
 	border-top-left-radius: 10px;
 	position: fixed;
@@ -12,6 +11,16 @@
 	left: 10px;
 	bottom: 0px !important;
 	display: none;
+	
+	#hider{
+		position: absolute;
+		margin-top: -23px;
+	}
+	#shower{
+		position: absolute;
+		margin-top: -23px;
+		display: none;
+	}
 	#topper{
 		height: 50px;
 		border-top-right-radius: 30px;

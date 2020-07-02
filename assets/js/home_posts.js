@@ -22,9 +22,9 @@
     var x = document.querySelectorAll("#check");
     for(i of x){
         if(i.innerText=="Liked"){
-            i.innerHTML = '<i class="fa fa-thumbs-up" aria-hidden="true"></i>';
+            i.innerHTML = '<i class="fas fa-heart" style="color:red"></i>';
         }else{
-            i.innerHTML = '<i class="fa fa-thumbs-down" aria-hidden="true"></i>';
+            i.innerHTML = '<i class="far fa-heart" style="color:black"></i>';
         }
     }
     
@@ -79,7 +79,7 @@
             <small>
             
             <a class="toggle-like-button" data-likes="${post.likes.length}"
-                    href="/likes/toggle/?type=Post&id=${post._id}"> 0 Likes <i class="fa fa-thumbs-down" aria-hidden="true"></i></a>
+                    href="/likes/toggle/?type=Post&id=${post._id}"> 0 Likes <i class="far fa-heart" style="color:black"></i></a>
             </small>
             <div class="post-comments">
                     <form action="comment/create" id="post-<%= post._id %>-comments-form" method="POST">

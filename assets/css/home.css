@@ -1,22 +1,18 @@
 #home-container {
   display: flex;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  position: relative;
+  justify-content: space-between; }
   #home-container #feed-posts {
     width: 80%;
     padding: 10px; }
     #home-container #feed-posts #user-name {
       font-weight: bold; }
   #home-container #user-friends {
-    width: 20%;
+    width: auto;
     padding: 10px;
     border-left: 2px solid black;
     height: 100%; }
-
-.Liked {
-  color: green; }
-
-.notLiked {
-  color: gray; }
 
 #check {
   display: inline; }
