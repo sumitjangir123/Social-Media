@@ -59,7 +59,6 @@
                         p{
                             background-color: white;
                             color: rgb(34, 23, 21);
-                            padding: 10px;
                         }
                     }
                 }
@@ -124,15 +123,19 @@
                 z-index: 2;
                 box-shadow: 0 10px 20px rgba(0,0,0,0.5);
                     .up{
-                        height: auto;
+                        overflow: hidden;
+                        height: 58%;
                         img{
                             position: relative;
                             width: 100%;
-                            height: 100%;
+                            height: auto;
+                            overflow: hidden;
+                            background-size: cover;
+                          
                         }
                     }
                     .down{
-                        height: 60%;
+                        height: 42%;
                         display: flex;
                         flex-direction: column;
                         padding: 5px;

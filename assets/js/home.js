@@ -7,7 +7,7 @@ var element1= document.getElementById("chat-messages-list");
 function dragElement(elmnt) {
     setTimeout(function(){ 
       elmnt.style.display="block";
-     }, 4);
+     }, 4000);
 
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
   if (document.getElementById(elmnt.id + "-header")) {

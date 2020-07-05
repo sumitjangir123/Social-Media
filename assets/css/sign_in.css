@@ -17,7 +17,8 @@ body {
   position: relative;
   min-height: 100vh;
   height: auto;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  overflow: hidden; }
   .sign-section .box1 {
     margin: 10px;
     border-radius: 10px;

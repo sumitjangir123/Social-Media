@@ -8,10 +8,11 @@ const resetPasswordEmail = require('../workers/reset_password_email');
 const ResetPasswordToken = require('../models/reset_password_token');
 const crypto = require('crypto');
 var mongoose = require('mongoose');
+
 module.exports.profile = async function (req, res) {
     //no. of registered users
     let number = await (await User.find({})).length;
-    let post_number = await (await Post.find({ user: req.params.id })).length;
+    let posts = await Post.find({ user: req.params.id });
 
     let user = await User.findById(req.params.id);
 
@@ -19,7 +20,8 @@ module.exports.profile = async function (req, res) {
         title: "profile page",
         profile_user: user,
         number: number,
-        post: post_number
+        post: posts.length,
+        posts: posts
     })
 }
 module.exports.signUp = function (req, res) {

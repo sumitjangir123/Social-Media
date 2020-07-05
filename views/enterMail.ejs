@@ -1,11 +1,11 @@
-    <div class="m-5 d-flex flex-wrap justify-content-center">
-
-        <div class="bg-warning img-fluid z-depth-2 mx-4 mb-2 animated tada" style="width: 500px;">
-            <h1 class="p-4" >Forgot your password?</h1>
-            <p class="py-1 px-4 ">Don't worry. Resetting your password is easy, just tell us the email address you registered with <span style="color: red;"> Thunder Bird.</span></p>
-        </div>
-    
-        <div class=" mx-4 img-fluid z-depth-2 " style="width: 500px;">
+<link rel="stylesheet" href="<%=assetPath('css/passResForm.css')%>">
+<div class="form-layout">
+    <img src="<%=assetPath('images/doubt.svg')%>" class="animated zoomInUp">
+    <div>
+        <h1 class="p-4" >Forgot your <span style="color: green;">password?</span></h1>
+        <p class="py-1 px-4 ">Don't worry. Resetting your password is easy, just tell us the email address you registered with <span style="color: red;"> Thunder Bird.</span></p>
+    </div>
+        <div>
             <form action="/users/reset-password" method="POST" class="px-3">
     
                 <!-- email -->
@@ -15,10 +15,11 @@
                     <label for="inputIconEx1">E-mail address</label>
                 </div>
     
-                <button class="btn btn-danger rounded-pill w-50 ml-4">Send</button>
+                <button class="btn rounded-pill w-100" style="background: green; color: white;">Send</button>
             </form>
         </div>
-    </div>
+</div>
+
 
 
 <p class="d-flex justify-content-center"><a href="/">Back to home</a></p>

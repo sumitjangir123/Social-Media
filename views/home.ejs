@@ -1,6 +1,47 @@
 <link rel="stylesheet" href="<%=assetPath('css/home.css')%>">
 <link rel="stylesheet" href="<%=assetPath('css/chat_box.css')%>">
 <div id="home-container">
+      <%if(!locals.user){%>
+        <section id="top-intro">
+                <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+                        <source src="https://storage.googleapis.com/coverr-main/mp4/Morning-Routine.mp4"
+                                type="video/mp4">
+                </video>
+                <div id="overlay">
+
+                        <div id="content-top">
+                                <p class="z-depth-1"> <i class="fas fa-quote-left" style="color: red;"></i> “Social media is not just an activity; it is an investment of valuable time and
+                                        resources. <br>
+                                        Surround yourself with people who not just support you and stay with you,<br>
+
+                                        but inform your thinking about ways to WOW your online presence” –<span
+                                                style="font-weight: bold;">Sean Gardner</span></p>
+
+                                <p class="z-depth-1"><i class="fas fa-quote-left" style="color: red;"></i>  “Word-of-mouth marketing isn’t about giving customers talking points, <br> as if they
+                                        were brand spokespeople. It’s about delivering an exceptional <br>
+                                        customer experience that makes customers want to recommend you.” – <span
+                                                style="font-weight: bold;">Deborah Eastman</span></p>
+                        </div>
+                        <div id="content-middle">
+                                <a href="/users/signIn" class="btn bg-warning" style="color: black;">Sign in</a>
+                                <a href="/users/signUp" class="btn bg-warning" style="color: black;">Sign Up</a>
+                        </div>
+                        <div id="content-bottom">
+                                <div style="display: inline-block; text-align: center;">
+                                        <img src="<%=assetPath('images/secured.svg')%>" style="width: 60px;margin: 10px;">
+                                        <p style="padding: 10px; border: 1px solid black; border-radius: 10px; margin-top: 10px;">Fully Secured</p>
+                                </div>
+                                <div style="display: inline-block; text-align: center;">
+                                        <img src="<%=assetPath('images/freeofcost.svg')%>" style="width: 120px; margin: 10px;">    
+                                        <p style="padding: 10px; border: 1px solid black; border-radius: 10px; margin-top: 10px;">Free Of Cost</p>                                </div>
+                                <div style="display:block; text-align: center;">
+                                        <img src="<%=assetPath('images/friends.svg')%>" style="width: 200px;">
+                                        <p style="padding: 10px; border: 1px solid black; border-radius: 10px; margin-top: 10px;">Find Local Friends</p>
+                                </div>
+                        </div>
+                </div>
+        </section>
+        <%}%>
         <section id="feed-posts">
                 <% if(locals.user){%>
                 <p>What's in your mind, post something !</p>
@@ -31,13 +72,13 @@
         </section>
 
         <section id="user-friends" class="z-depth-2">
-                <div>
+                <div id="after" style="display: none;" class="z-depth-2 mr-2">
                         <h4>Users</h4>
-                        <input class="form-control mr-sm-2" id="myInput" onkeyup="findFriends()" type="text"
-                                placeholder="Search for users.." aria-label="Search" title="Find Users">
+                        <!-- <input class="form-control mr-sm-2" id="myInput" onkeyup="findFriends()" type="text"
+                                placeholder="Search for users.." aria-label="Search" title="Find Users"> -->
                         <ul id="myUL">
                                 <% for(u of  users_list) {%>
-                                <li>
+                                <li class="animated slideInRight">
                                         <p><a href="/users/profile/<%=u.id%>"><%=u.name%></a>
                                                 <%if(locals.user && user.id!=u.id){%>
                                                 <% let temp='false'%>
@@ -62,9 +103,6 @@
                                 </li>
                                 <%}%>
                         </ul>
-                </div>
-                <div>
-                        <h4>Friends</h4>
                 </div>
         </section>
 </div>

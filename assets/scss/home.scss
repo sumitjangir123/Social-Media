@@ -3,8 +3,57 @@
     flex-wrap: wrap;
     position: relative;
     justify-content: space-between;
+
+    #top-intro{
+        height: auto;
+        width: 100vw;
+        height: auto;
+        overflow: hidden;
+        animation-duration: 1s;
+        video{
+            background-size: cover;
+            min-width: 100vw;
+            width: auto;
+            z-index: -1;
+            background-attachment: fixed;
+        }
+
+        #overlay{
+            position: absolute;
+            top: 0;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            align-items: center;
+            width: 100%;
+            flex-direction: column;
+            #content-top{
+                padding: 40px;
+                p{
+                    padding: 10px;
+                    border-radius: 10px;
+                }
+            }
+            #content-middle{
+                display: flex;
+                margin: 5px;
+                justify-content: space-between;
+                min-width: 300px;
+                width: auto;
+            }
+            #content-bottom{
+                text-align: center;
+                margin-top: 10px;
+                p{
+                    font-weight: bold;
+                }
+            }
+        }
+    }
     #feed-posts{
-        width: 80%;
+        min-height: 100vh;
+        height: auto;
+        width: 100%;
         padding: 10px;
         #user-name{
             font-weight: bold;
@@ -12,13 +61,41 @@
     }
     
     #user-friends{
-        width: auto;
-        padding:  10px;
-        border-left:2px solid black;
-        height:100%;
+        #after{
+            width: auto;
+            padding:  10px;
+            position: absolute;
+            right: 0;
+            top: 0;
+            background-color: white;
+            border:2px solid black;
+            min-width: 300px;
+            height:auto;
+        }
     }
 
 }
 #check{
     display: inline;
+}
+
+@media only screen and (min-width: 1400px) {
+    #home-container #top-intro video{
+        width: 100vw;
+    }
+ 
+}
+
+@media only screen and (max-width: 1400px) {
+    #home-container #top-intro video{
+        margin-left: -500px;
+    }
+ 
+}
+
+@media only screen and (max-width: 800px) {
+    #home-container #top-intro video{
+        margin-left: -1000px;
+    }
+
 }

@@ -1,8 +1,8 @@
 <link rel="stylesheet" href="<%=assetPath('css/profile.css')%>">
 <% if(locals.user.id == profile_user._id){%>
+
 <div class="profile-container">
     <div class="inner-div">
-
         <div class="upper-box">
             <img src="<%=user.avatar%>" alt="profile_picture">
             <div class="content">
@@ -10,10 +10,20 @@
                     <p class="btn u_p"><%=user.name%></p>
                     <p class="btn u_p"><%=user.email%></p>
                     <div class="statistics">
-                        <p class="rounded px-3">Posts &nbsp;<span id="value2" class="zoom"><%=post%></span></p>
-                        <p class="rounded px-3">Followers &nbsp; <span id="value3"
+                        <p class="py-2 px-2">Posts &nbsp;<span id="value2" class="zoom"><%=post%></span></p>
+
+                        <p class="py-2 px-2">Followers &nbsp; <span id="value3"
                                 class="zoom"><%=user.friendships.length%></span></p>
-                        <p class="rounded px-3">Likes &nbsp;</p>
+
+                        <!-- counting likes of all the post by traversing all the posts -->
+                        <p class=" py-2 px-2" class="zoom">Likes &nbsp;<span id="value4" class="zoom"> <%temp=0%>
+                            <%for(i of posts){%>
+                            <% temp=temp+i.likes.length %>
+                            <%}%>
+                            
+                            <%=temp%>
+                        </span>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -33,7 +43,7 @@
                         latest technologies. <br>
                         prepare for an inspiration extravaganza.
                     </p>
-                    <span class="z-depth-1 strip"></span>
+                    <span class="z-depth-4 strip"></span>
                 </div>
             </div>
 
@@ -61,7 +71,8 @@
 
                             <input type="file" name="avatar" placeholder="Profile Picture" style="display: block;">
 
-                            <button type="submit" class="btn btn-md mt-3" style="background-color: #41e0d0;">Submit</button>
+                            <button type="submit" class="btn btn-md mt-3"
+                                style="background-color: #41e0d0;">Submit</button>
                         </form>
                     </div>
                 </div>
@@ -77,4 +88,6 @@
 <h3>user id : <%=profile_user._id%></h3>
 <%}%>
 
+<a href="/"><img src="<%=assetPath('images/home.svg')%>" style="width: 100px; position: absolute; right: 0;"
+class="animated bounce slower infinite"></a>
 <script src="<%=assetPath('js/profile.js')%>"></script>

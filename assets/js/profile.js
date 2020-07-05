@@ -1,4 +1,3 @@
-//
 var obj = document.querySelectorAll(".zoom");
 
 //animate the value

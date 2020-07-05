@@ -1,5 +1,6 @@
 {
 
+    document.getElementById('search-bar').style.display="block";    
     //search function to find friends
     function findFriends() {
         var input, filter, ul, li, a, i, txtValue;
@@ -7,6 +8,7 @@
         filter = input.value.toUpperCase();
         ul = document.getElementById("myUL");
         li = ul.getElementsByTagName("li");
+        document.getElementById('after').style.display="block";
         for (i of li) {
             a = i.getElementsByTagName("a")[0];
             txtValue = a.textContent || a.innerText;

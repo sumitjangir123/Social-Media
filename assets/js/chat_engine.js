@@ -27,6 +27,7 @@ class ChatEngine{
 
         $('#send-message').click(function(){
             let msg = $('#chat-message-input').val();
+            document.getElementById('chat-message-input').value='';
 
             if (msg != ''){
                 self.socket.emit('send_message', {

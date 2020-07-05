@@ -2,19 +2,21 @@
 	<div id="user-chat-box" class="animated bounceInUp z-depth-5">
 		<div id="hider" class="btn bg-warning rounded-circle px-1 py-0" onclick="doIt()"><i class="far fa-times-circle"></i></div>
 		<div id="shower" class="btn bg-warning rounded-circle px-1 py-0" onclick="doItAgain()"><i class="fas fa-chevron-circle-up"></i></div>
-		<div id="topper" class="z-depth-2">
+		<div id="topper" class="z-depth-2" title="you can resize the window size and position">
 			<p id="user-chat-box-header">Chat with us, we are online!</p>
 		</div>
-		<div id="content">
 			<ul id="chat-messages-list" class="p-2">
 				<li class="other-message">
 					<span>
 						Welcome to Thunder Bird :) <br>
 						Put your thoughts with all users of thunder bird community.
 					</span>
+					<span>
+						hi there &#129299;
+					</span>
 				</li>
 				<li class="self-message">
-					<span>hii</span>
+					<span></span>
 				</li>
 	
 			</ul>
@@ -22,6 +24,5 @@
 					<input type="text" name="text" id="chat-message-input" class="form-control rounded" placeholder="type something here..."> 
 					<button type="submit" id="send-message" class="btn btn-md btn-success rounded-pill">Send</button>
 			</div>
-		</div>
 	</div>
 <% } %>
