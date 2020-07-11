@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <link rel="icon" type="image/x-icon" href="https://img.icons8.com/fluent/48/000000/ok.png">
 
-    
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <!-- Google Fonts -->
@@ -27,7 +27,17 @@
     <%-style%>
 </head>
 <%-include('_header');%>
-<main id="layout-main">
+<div class="loader-wrapper" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; display: flex; justify-content: center; align-items: center; background-color: white; z-index: 99;">
+    <img src="<%=assetPath('images/thunder.gif')%>" alt="nothing" >
+</div>
+
+<script>
+    $(window).on("load",function(){
+        $(".loader-wrapper").fadeOut("slow");
+        $("#layout-main").fadeIn("slow");
+    });
+</script>
+<main id="layout-main" style="display: none;">
     <%-body%>
 </main>
 <%-include('_footer');%>
@@ -38,7 +48,8 @@
 <!-- Bootstrap tooltips -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
 <!-- Bootstrap core JavaScript -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.0/js/mdb.min.js"></script>
 

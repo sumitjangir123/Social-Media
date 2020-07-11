@@ -51,7 +51,6 @@
         }
     }
     #feed-posts{
-        min-height: 100vh;
         height: auto;
         width: 100%;
         padding: 10px;
@@ -74,7 +73,111 @@
         }
     }
 
+    #posts-list-container{
+        width: 100%;
+        height: auto;
+        margin: 0;
+        overflow: hidden;
+        ul{
+            list-style: none;
+            display: block;
+            margin: 0;
+            padding: 10px;
+            li{
+                width: 100%;
+                margin-top: 10px;
+                padding: 10px;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-around;
+                align-items: center;
+
+                .image-container{
+                    height: 400px;
+                    width: 300px;
+                    overflow: hidden;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 10px;
+                    margin-bottom: 10px;
+                    img{
+                        background-size: cover;
+                        max-width: 300px;
+                        width: auto;
+                        height: auto;
+                        max-height: 400px;
+                        display: block;
+                    }
+                }
+
+                .except_img{
+                    display: inline-block;
+                    max-width: 300px;
+                    input{
+                        padding: 10px;
+                        width: 300px;
+                        display: block;
+                        margin: 5px;
+                        outline: none;
+                    }
+                    #avatar{
+                        width: 10px;
+                        display: inline-block;
+                        height: 20px;
+                        width: 20px;
+                        border-radius: 50%;
+                        margin-right: 10px;
+                    }
+                
+
+                    .posts_content{
+                        display: block;
+                        padding: 10px;
+                    }
+                    .post-comments{
+                        display: flex;
+                        justify-content: center;
+                        flex-direction: column;
+                        flex-wrap: nowrap;
+
+                       .two{
+                        width: 300px;
+                       }
+                        ul{
+                            overflow: scroll;
+                            max-height: 300px;
+                            width: 305px;
+                            li{
+                                display: inline-block;
+                                margin-top: 0;
+
+                                #comments-like{
+                                    display:  flex;
+                                    justify-content:
+                                    flex-end;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        ul li:nth-child(n+11){
+            display: none;
+        }
+
+
+        #showmore{
+            display: block;
+        }
+    }
+
 }
+
+
+
+
 #check{
     display: inline;
 }

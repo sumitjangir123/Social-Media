@@ -86,13 +86,6 @@ module.exports.destroySession = function (req, res) {
 }
 
 module.exports.update = async function (req, res) {
-    // if(req.params.id==req.user.id){
-    //     User.findByIdAndUpdate(req.params.id,{name : req.body.name,email : req.body.email},function(err,user){
-    //         return res.redirect('back');
-    //     })
-    // }else{
-    //     return res.status(401).send('Unauthorized');
-    // }  
 
     if (req.user.id == req.params.id) {
         try {
@@ -236,6 +229,7 @@ module.exports.AddFriend = async function (req, res) {
     
     Fromuser.friendships.push(frands);
     Fromuser.save();
+    
     Touser.friendships.push(frands);
     Touser.save();
 

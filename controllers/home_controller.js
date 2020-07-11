@@ -2,7 +2,6 @@ const db = require('../config/mongoose');
 const Post = require("../models/post");
 const User = require("../models/user");
 const Like = require('../models/like');
-const { localsName } = require('ejs');
 //home controller
 module.exports.home = async function (req, res) {
     try {
@@ -10,6 +9,7 @@ module.exports.home = async function (req, res) {
         let post_list = await Post.find({})
             .sort('-createdAt')
             .populate('user')
+            .populate('photos')
             .populate({
                 path: 'comment',
                 populate: {
@@ -29,10 +29,20 @@ module.exports.home = async function (req, res) {
         return res.render('home', {
             post_list: post_list,
             users_list: users,
-            title: "Social Media"
+            title: "Thunder Bird"
         });
     } catch (err) {
         console.log('Error', err);
         return;
+    }
+}
+
+module.exports.about= async function(req,res){
+    try {
+        return res.render('about', {
+            title: "Sumit Kumar"
+        });
+    } catch (error) {
+        console.log(error);
     }
 }

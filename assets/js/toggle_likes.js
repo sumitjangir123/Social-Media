@@ -21,7 +21,7 @@ class ToggleLike{
             })
             .done(function(data) {
                 let likesCount = parseInt($(self).attr('data-likes'));
-                console.log(likesCount);
+                console.log(data);
                 if (data.data.deleted == true){
                     likesCount -= 1;
                     $(self).html(`${likesCount} Likes <i class="far fa-heart" style="color:black;"></i>`);

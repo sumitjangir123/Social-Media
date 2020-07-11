@@ -22,17 +22,17 @@ const development= {
         port: 587,
         secure: false, // true for 465, false for other ports
         auth: {
-          user: '',
+          user: 'thethunderbirdus@gmail.com',
           pass: ''
         }
     },
     google_client_id: "",
     google_client_secret: "",
-    google_call_back_url: "",
+    google_call_back_url: "http://localhost:8000/users/auth/google/callback",
 
     facebook_client_id: "",
     facebook_client_secret: "",
-    facebook_call_back_url: "",
+    facebook_call_back_url: "http://localhost:8000/users/auth/facebook/callback",
 
     jwt_secret: 'codeial',
     morgan: {

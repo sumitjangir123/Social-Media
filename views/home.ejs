@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="<%=assetPath('css/home.css')%>">
 <link rel="stylesheet" href="<%=assetPath('css/chat_box.css')%>">
 <div id="home-container">
-      <%if(!locals.user){%>
+        <%if(!locals.user){%>
         <section id="top-intro">
                 <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
                         <source src="https://storage.googleapis.com/coverr-main/mp4/Morning-Routine.mp4"
@@ -10,14 +10,17 @@
                 <div id="overlay">
 
                         <div id="content-top">
-                                <p class="z-depth-1"> <i class="fas fa-quote-left" style="color: red;"></i> “Social media is not just an activity; it is an investment of valuable time and
+                                <p class="z-depth-1"> <i class="fas fa-quote-left" style="color: red;"></i> “Social
+                                        media is not just an activity; it is an investment of valuable time and
                                         resources. <br>
                                         Surround yourself with people who not just support you and stay with you,<br>
 
                                         but inform your thinking about ways to WOW your online presence” –<span
                                                 style="font-weight: bold;">Sean Gardner</span></p>
 
-                                <p class="z-depth-1"><i class="fas fa-quote-left" style="color: red;"></i>  “Word-of-mouth marketing isn’t about giving customers talking points, <br> as if they
+                                <p class="z-depth-1"><i class="fas fa-quote-left" style="color: red;"></i>
+                                        “Word-of-mouth marketing isn’t about giving customers talking points, <br> as if
+                                        they
                                         were brand spokespeople. It’s about delivering an exceptional <br>
                                         customer experience that makes customers want to recommend you.” – <span
                                                 style="font-weight: bold;">Deborah Eastman</span></p>
@@ -28,46 +31,57 @@
                         </div>
                         <div id="content-bottom">
                                 <div style="display: inline-block; text-align: center;">
-                                        <img src="<%=assetPath('images/secured.svg')%>" style="width: 60px;margin: 10px;">
-                                        <p style="padding: 10px; border: 1px solid black; border-radius: 10px; margin-top: 10px;">Fully Secured</p>
+                                        <img src="<%=assetPath('images/secured.svg')%>"
+                                                style="width: 60px;margin: 10px;">
+                                        <p
+                                                style="padding: 10px; border: 1px solid black; border-radius: 10px; margin-top: 10px;">
+                                                Fully Secured</p>
                                 </div>
                                 <div style="display: inline-block; text-align: center;">
-                                        <img src="<%=assetPath('images/freeofcost.svg')%>" style="width: 120px; margin: 10px;">    
-                                        <p style="padding: 10px; border: 1px solid black; border-radius: 10px; margin-top: 10px;">Free Of Cost</p>                                </div>
+                                        <img src="<%=assetPath('images/freeofcost.svg')%>"
+                                                style="width: 120px; margin: 10px;">
+                                        <p
+                                                style="padding: 10px; border: 1px solid black; border-radius: 10px; margin-top: 10px;">
+                                                Free Of Cost</p>
+                                </div>
                                 <div style="display:block; text-align: center;">
                                         <img src="<%=assetPath('images/friends.svg')%>" style="width: 200px;">
-                                        <p style="padding: 10px; border: 1px solid black; border-radius: 10px; margin-top: 10px;">Find Local Friends</p>
+                                        <p
+                                                style="padding: 10px; border: 1px solid black; border-radius: 10px; margin-top: 10px;">
+                                                Find Local Friends</p>
                                 </div>
                         </div>
                 </div>
         </section>
         <%}%>
         <section id="feed-posts">
-                <% if(locals.user){%>
-                <p>What's in your mind, post something !</p>
-                <form action="post/create" id="new-post-form" method="POST" class="border p-1">
-
-                        <div class="md-form">
-                                <i class="prefix fas fa-american-sign-language-interpreting "></i>
-                                <textarea type="text" name="content" id="post" class="md-textarea form-control"
-                                        mdbInput></textarea>
-                                <label for="post">Remember , be nice !</label>
-                        </div>
-                        <button type="submit" value="post" class="btn btn-primary btn-md">Post</button>
-                </form>
-                <% } %>
-
-                <h4>posts till now</h4>
-
-                <div id="posts-list-container">
-                        <ul>
-                                <% for(i of post_list){ %>
-
-                                <%- include('_post') -%>
-
-                                <%} %>
-                        </ul>
+        
+        <% if(locals.user){%>
+        <p>What's in your mind, post something !</p>
+        <form action="post/create" id="new-post-form" method="POST" class="border p-1" enctype="multipart/form-data">
+                <div class="md-form">
+                        <i class="prefix fas fa-american-sign-language-interpreting "></i>
+                        <textarea type="text" name="content" id="post" class="md-textarea form-control"
+                                mdbInput></textarea>
+                        <label for="post">Remember , be nice !</label>
                 </div>
+                <input type="file" name="photo" placeholder="Upload Photos" style="display: block; " id="file">
+                <button type="submit" value="post" class="btn btn-primary btn-md">Post</button>
+        </form>
+        <% } %>
+
+        <h4>Posts On Thunder</h4>
+
+        <div id="posts-list-container" class="z-depth-4">
+                <ul id="datalist">
+                        <% for(i of post_list){ %>
+
+                        <%- include('_post') -%>
+
+                        <%} %>
+                </ul>
+                <span id="showmore" class="btn bg-info">Show More</span>
+        </div>
 
         </section>
 
@@ -107,9 +121,11 @@
         </section>
 </div>
 
+<audio id="myAudio">
+        <source src="sounds/sound.ogg" type="audio/ogg">
+</audio>
 <%- include('_chat_box') -%>
-
-
+                                </script>
                                 <script src="<%=assetPath('js/home_post_comments.js')%>"></script>
                                 <script src="<%=assetPath('js/home_posts.js') %>"></script>
 

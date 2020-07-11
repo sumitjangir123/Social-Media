@@ -7,6 +7,8 @@ var element1= document.getElementById("chat-messages-list");
 function dragElement(elmnt) {
     setTimeout(function(){ 
       elmnt.style.display="block";
+      //calling the sound play function
+      playAudio();
      }, 4000);
 
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
@@ -83,4 +85,27 @@ function doItAgain(){
   y.style.display="none";
   z.style.height="400px";
   e.style.position="absolute"
+}
+
+//for playing the notification sound
+var sound = document.getElementById("myAudio"); 
+function playAudio() { 
+  sound.play(); 
+} 
+
+//for the functionality of hide and show
+function showComments(id){
+  
+  let button= document.getElementById(id);
+  let temp= document.getElementById("comment_section"+ "_"+id);
+  console.log(button.innerText);
+
+  if(button.innerText=="COMMENTS"){
+    temp.style.display="block";
+    button.innerText="HIDE";
+  }else{
+    temp.style.display="none";
+    button.innerText="COMMENTS";
+  }
+ 
 }

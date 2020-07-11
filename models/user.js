@@ -2,7 +2,8 @@ const mongoose=require('mongoose');
 mongoose.set('useCreateIndex', true);
 const multer= require('multer');
 const path= require('path');
-//here cit converts path into the string
+
+//here it converts path into the string
 const AVATAR_PATH= path.join('/uploads/users/avatars');
 
 const userSchema=new mongoose.Schema({
@@ -22,13 +23,14 @@ const userSchema=new mongoose.Schema({
     avatar:{
         type:String
     },
-    friendships: [{ 
+    friendships: [{
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Friendship'
     }]
 },{
     timestamps:true
 });
+
 
 let storage = multer.diskStorage({
     destination: function (req, file, cb) {

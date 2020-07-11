@@ -2,26 +2,45 @@ const Post = require("../models/post");
 const  Comment= require('../models/comment');
 const User = require('../models/user');
 const Like= require('../models/like');
+const Photo= require('../models/photos');
 module.exports.create =async function (req, res) {
     
     try {
-        let post = await Post.create({
-            content : req.body.content,
-            user : req.user._id
-        })
-        if(req.xhr){
-            //we only want to populate the name of the user 
-            post =await post.populate('user','name').execPopulate();
-            return res.status(200).json({
-                data: {
-                    post:post
-                },
-                message: 'Post Created !'
-            })
-        }
+ 
+          await Photo.uploadPhoto(req,res,function(err){
+            if(err){ console.log('****multer error',err);}
 
-        req.flash('success','Post Published !');
-        return res.redirect('back');
+            if(req.file){
+                
+                //here we have to use photos._id to refer the photos schema so that "then" is used to wait for the promises to complete otherwise they will be in pending state
+                let photos = Photo.create({
+                    user: req.user._id,
+                    photo: Photo.photoPath + '/' + req.file.filename
+                }).then(async function(result){
+                    
+                    let post= await Post.create({
+                        content : req.body.content,
+                        user : req.user._id,
+                        photos : result._id 
+                    })
+
+                    if(req.xhr){
+                        //we only want to populate the name of the user 
+                        post =await post
+                        .populate('user','name avatar')
+                        .populate('photos').execPopulate();
+                        return res.status(200).json({
+                            data: {
+                                post:post
+                            },
+                            message: 'Post Created !'
+                        })
+                    }
+               
+                });
+            }
+        })
+
     }catch (err) {
         req.flash('error','Error in creating a post');
         console.log(err);
