@@ -58,6 +58,22 @@ gulp.task('images', function(done){
     done();
 });
 
+gulp.task('images', function(done){
+    console.log('compressing images...');
+    gulp.src('./assets/**/*.+(png|jpg|gif|svg|jpeg)')
+    .pipe(imagemin())
+    .pipe(rev())
+    .pipe(gulp.dest('./public/assets'))
+    .pipe(rev.manifest({
+        cwd: 'public',
+        merge: true
+    }))
+    .pipe(gulp.dest('./public/assets'));
+    done();
+});
+
+
+
 
 // empty the public/assets directory
 gulp.task('clean:assets', function(done){

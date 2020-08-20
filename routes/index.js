@@ -9,6 +9,7 @@ const homeController=require('../controllers/home_controller');
 
 router.get("/",homeController.home);
 router.get("/about",homeController.about);
+router.get("/privacyPolicies",homeController.policies);
 router.use("/users",require("./users"));
 router.use("/post",require("./posts"));
 router.use("/comment",require('./comments'));

@@ -27,17 +27,7 @@
     <%-style%>
 </head>
 <%-include('_header');%>
-<div class="loader-wrapper" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; display: flex; justify-content: center; align-items: center; background-color: white; z-index: 99;">
-    <img src="<%=assetPath('images/thunder.gif')%>" alt="nothing" >
-</div>
-
-<script>
-    $(window).on("load",function(){
-        $(".loader-wrapper").fadeOut("slow");
-        $("#layout-main").fadeIn("slow");
-    });
-</script>
-<main id="layout-main" style="display: none;">
+<main id="layout-main">
     <%-body%>
 </main>
 <%-include('_footer');%>

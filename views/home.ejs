@@ -93,7 +93,10 @@
                         <ul id="myUL">
                                 <% for(u of  users_list) {%>
                                 <li class="animated slideInRight">
-                                        <p><a href="/users/profile/<%=u.id%>"><%=u.name%></a>
+                                        <p><a href="/users/profile/<%=u.id%>">
+                                                
+                                                <span style="display: none;"  id="<%=u.email%>"><img src="https://img.icons8.com/color/48/000000/youtube-live.png" style="width: 1rem;" title="live"/></span>
+                                                <%=u.name%></a>
                                                 <%if(locals.user && user.id!=u.id){%>
                                                 <% let temp='false'%>
 
@@ -107,8 +110,7 @@
 
                                                 <%if(temp=='false'){%>
                                                 <span><a href="/users/addFriend/?from=<%=user._id%>&to=<%=u._id%>"
-                                                                style="color: red;">&nbsp;<i
-                                                                        class="fas fa-user-plus"></i></a></span>
+                                                                style="color: red;"> <img src="https://img.icons8.com/fluent/48/000000/add-user-male.png" style="width: 1rem;" title="add friend"/></a></span>
 
                                                 <%}%>
                                                 <%}%>

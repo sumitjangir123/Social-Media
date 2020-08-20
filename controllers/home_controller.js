@@ -46,3 +46,13 @@ module.exports.about= async function(req,res){
         console.log(error);
     }
 }
+
+module.exports.policies= async function(req,res){
+    try {
+        return res.render('privacyPolicies',{
+            title: "privacy policies"
+        })
+    } catch (error) {
+        console.log(error);
+    }
+}

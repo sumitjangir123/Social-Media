@@ -1,8 +1,33 @@
+
+function live(data){
+     document.getElementById(data.user_email).style.display="inline-block";
+     new Noty({
+        theme: 'metroui',
+        text: data.user_email+' is '+'live',
+        type: 'success',
+        layout: 'topRight',
+        timeout: 2000
+    }).show();
+}
+
+function notlive(data){
+    console.log(data);
+    document.getElementById(data.user_email).style.display="none";
+    new Noty({
+       theme: 'metroui',
+       text: data.user_email+' is '+'offline',
+       type: 'success',
+       layout: 'topRight',
+       timeout: 2000
+   }).show();
+}
+
 class ChatEngine{
     constructor(chatBoxId,userEmail){
         this.chatBox= $(`#${chatBoxId}`);
         this.userEmail= userEmail;
-        this.socket= io.connect('http://107.21.187.244:5000');
+        this.socket= io.connect('http://localhost:5000');
+        // http://107.21.187.244:5000
         if(this.userEmail){
             this.connectionHandler();
         }
@@ -21,6 +46,13 @@ class ChatEngine{
 
             self.socket.on('user_joined',function(data){
                 console.log('a user joined!',data);
+                live(data);
+            });
+
+            self.socket.on('diss',function(data){
+
+                notlive(data);
+                console.log('user dissconnected ',data);
             });
         
         });
