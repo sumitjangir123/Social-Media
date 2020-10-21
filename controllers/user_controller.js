@@ -227,8 +227,7 @@ module.exports.AddFriend = async function (req, res) {
     let Fromuser= await User.findById(req.user.id);
     let Touser= await User.findById(req.query.to);
     
-    Fromuser.friendships.push(frands);
-    Fromuser.save();
+    
     
     Touser.friendships.push(frands);
     Touser.save();
